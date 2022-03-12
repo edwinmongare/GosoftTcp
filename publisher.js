@@ -1,9 +1,9 @@
 const amqp = require("amqplib/callback_api");
 const net = require("net");
 const port = 7001;
-const host = "65.52.150.1";
+const host = "127.0.0.1";
 
-amqp.connect("amqp://65.52.150.1", function (error0, connection) {
+amqp.connect("amqp://127.0.0.1", function (error0, connection) {
   if (error0) {
     throw error0;
   }
