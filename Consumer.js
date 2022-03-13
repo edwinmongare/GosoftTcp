@@ -22,7 +22,11 @@ amqp.connect("amqp://0.0.0.0", function async(error0, connection) {
         if (msg.length <= 0) {
           console.log("no message in queue");
         }
-        const message = JSON.parse(msg.content.toString());
+        const message = msg.content.toString();
+        // const message = JSON.parse(msg.content.toString());
+        let dataArraay = [];
+        dataArraay.push(message);
+        //   console.log(" [x] Received %s", message);
 
         const messageTwo = {
           "imei": "865067025030191",
@@ -39,7 +43,7 @@ amqp.connect("amqp://0.0.0.0", function async(error0, connection) {
         //**  post to http endpoint
         axios
           .post(
-            "https://gosoftcoreapi.azurewebsites.net/Borehole/SaveSensorTelemetry",
+            "https://gosoftcoreapi.azurewebsites.net/api/Borehole/SaveSensorTelemetry",
             message,
             {
               headers: {
@@ -57,6 +61,9 @@ amqp.connect("amqp://0.0.0.0", function async(error0, connection) {
             }
           );
       });
+      // .catch(function (error) {
+      //   console.log(error, "err");
+      // });
     },
     {
       noAck: true,
