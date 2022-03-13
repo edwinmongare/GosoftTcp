@@ -1,7 +1,7 @@
 const amqp = require("amqplib/callback_api");
 const axios = require("axios");
 
-amqp.connect("amqp://127.0.0.1", function async(error0, connection) {
+amqp.connect("amqp://0.0.0.0", function async(error0, connection) {
   if (error0) {
     throw error0;
   }
